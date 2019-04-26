@@ -7,7 +7,7 @@
     </el-radio-group>
     <div class="note-list">
       <ul>
-        <li v-for="note in notes" :key="note.id"> {{note.title}}</li>
+        <li v-for="(note, index) in notes" :key="index"> <router-link :to="`/note/${index}`">{{note.title}}</router-link></li>
       </ul>
     </div>
   </div>
@@ -43,5 +43,12 @@ export default {
 
   li:hover{
   background-color: #ccb4ff;
+  }
+
+  a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
   }
 </style>

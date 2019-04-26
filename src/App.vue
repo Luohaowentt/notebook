@@ -35,10 +35,31 @@ export default {
   background:honeydew;
   text-align: center;
   padding: 20px 0;
+  overflow: auto;
 }
 .note-main{
   height: 100%;
   background: whitesmoke;
   padding: 20px 30px;
+  overflow: auto;
 }
+a{
+  text-decoration: none;
+}
+a:link{
+  color: black;
+}
+/*访问过的链接*/
+a:visited{
+  color: black;
+}
+/*鼠标经过时*/
+a:hover{
+  color: black;
+}
+/*在鼠标点击的同时*/
+a:active{
+  color: black;
+}
+
 </style>
