@@ -11,11 +11,10 @@ Vue.use(ElementUI)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // },
+    {
+      path: '/',
+      redirect: '/home'
+    },
     {
       path: '/note/:id',
       name: 'Note',

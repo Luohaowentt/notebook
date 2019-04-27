@@ -1,6 +1,7 @@
 //  状态对象
 export default {
   notes: [{
+    id: 1,
     title: '我的笔记1',
     favorite: false,
     content: '本集主要改编自原作中的地狱变之卷，并包含了一部分鲭目之卷内容\n' +
@@ -29,6 +30,7 @@ export default {
       '百：我怎么会。多罗罗，这次还得靠你走在我前面呢。带我去藏宝的地方……'
   },
   {
+    id: 2,
     title: '我的笔记2',
     favorite: true,
     content: 'Vuex 是一个专门为 Vue.js 应用所设计的集中式状态管理架构。它借鉴了 Flux 和 Redux 的设计思想，但简化了概念，并且采用了一种为能更好发挥 Vue.js 数据响应机制而专门设计的实现。\n' +
@@ -53,5 +55,6 @@ export default {
       'Mutations: 事件处理器用来驱动状态的变化。\n' +
       'Actions: 可以给组件使用的函数，以此用来驱动事件处理器 mutations'
   }
-  ]
+  ],
+  noteId: 3 // 只有增加note时会加1，用于标记每个note 并使其不重复
 }

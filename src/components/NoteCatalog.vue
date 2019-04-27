@@ -6,15 +6,20 @@
       <el-radio-button label="Favorites"></el-radio-button>
     </el-radio-group>
     <div class="note-list">
-      <ul>
-        <li v-for="(note, index) in notes" :key="index"> <router-link :to="`/note/${index}`">{{note.title}}</router-link></li>
+      <ul v-if="notesType === 'All Notes'">
+        <li v-for="note in notes" :key="note.noteId"> <router-link :to="`/note/${note.id}`">{{note.title}}</router-link></li>
+        <p v-if="notes.length === 0"> 您还没有笔记，点击左侧栏加号可以添加笔记</p>
+      </ul>
+      <ul v-if="notesType === 'Favorites'">
+        <li v-for="note in favoriteNotes" :key="note.noteId"> <router-link :to="`/note/${note.id}`">{{note.title}}</router-link></li>
+        <p v-if="favoriteNotes.length === 0"> 您还没有笔记标记为喜爱</p>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 export default {
   name: 'NoteCatalog',
   data () {
@@ -23,7 +28,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(['notes'])
+    ...mapState(['notes']),
+    ...mapGetters(['favoriteNotes'])
   }
 }
 </script>

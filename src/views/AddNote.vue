@@ -1,5 +1,5 @@
 <template>
-  <div class="addnote-main">
+  <div class="add-note-main">
     <el-form ref="note" :model="note" label-width="80px">
       <el-form-item label="笔记名称">
         <el-input v-model="note.title"></el-input>
@@ -16,32 +16,39 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: 'AddNote',
   data () {
     return {
       note: {
+        id: 0,
         title: '',
-        favorites: false,
+        favorite: false,
         content: ''
       }
     }
   },
+  computed: {
+    ...mapState(['noteId'])
+  },
   methods: {
     onSubmit () {
       if (this.note.title && this.note.content) {
+        this.note.id = this.noteId
         this.$store.dispatch('addNote', this.note)
         this.note = {
+          id: this.noteId * 1,
           title: '',
-          favorites: false,
+          favorite: false,
           content: ''
         }
-        this.$message({
+        this.$notify({
           message: '创建成功！',
           type: 'success'
         })
       } else {
-        this.$message({
+        this.$notify({
           message: '标题和内容不能为空',
           type: 'warning'
         })
@@ -52,7 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.addnote-main{
+.add-note-main{
   margin-top: 30px;
 }
 </style>
